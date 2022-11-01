@@ -4,7 +4,7 @@ import withRouter from "../../ReactV5/WithRouter";
 import './menu-item.scss'
 
 const MenuItem = (props) => {
-    let { title, imageUrl, size, linkUrl, router: { location, navigate } } = props;
+    const { title, imageUrl, size, linkUrl, router: { location, navigate } } = props;
     return (
         <div
             className={`menu-item ${size}`}

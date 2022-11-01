@@ -1,37 +1,16 @@
 import React from 'react';
-import './App.css';
-
-import HomePage from './page/homepage';
 import {
   BrowserRouter,
   Routes,
   Route,
 } from 'react-router-dom';
 
+import './App.css';
 
-const HatsPage = () => {
-  return (
-    <div>
-      <h1>HAST PAGE</h1>
-    </div>
-  )
-}
+import HomePage from './pages/homepage/homepage';
+import ShopPage from './pages/shop/shop';
 
-const Jackets = () => {
-  return (
-    <div>
-      <h1>JACKETS PAGE</h1>
-    </div>
-  )
-}
 
-const Sneakers = () => {
-  return (
-    <div>
-      <h1>JACKETS PAGE</h1>
-    </div>
-  )
-}
 
 function App() {
   return (
@@ -39,9 +18,7 @@ function App() {
       <div className="App">
         <Routes>
           <Route path='/' element={<HomePage />} />
-          <Route path='/shop/hats' element={<HatsPage />} />
-          <Route path='/shop/jackets' element={<Jackets />} />
-          <Route path='/shop/sneakers' element={<Sneakers />} />
+          <Route path='/shop' element={<ShopPage />} />
         </Routes>
       </div>
     </BrowserRouter>

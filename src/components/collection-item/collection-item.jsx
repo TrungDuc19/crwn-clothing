@@ -1,4 +1,5 @@
 import React from "react";
+
 import withRouter from "../../ReactV5/WithRouter";
 
 import './collection-item.scss'

@@ -1,0 +1,23 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 70px;
+    margin-bottom: 25px;
+
+    .logo-container {
+        padding: 12px;
+    }
+
+    .options {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        width: 30%;
+        height: 100%;
+
+        .option {
+            padding: 12px;
+        }
+    }
+}

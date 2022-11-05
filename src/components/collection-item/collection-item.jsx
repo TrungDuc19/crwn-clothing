@@ -6,7 +6,6 @@ import './collection-item.scss'
 
 const CollectionItem = (props) => {
     const { name, price, imageUrl } = props;
-    console.log(imageUrl);
     return (
         <div className="collection-item">
             <div

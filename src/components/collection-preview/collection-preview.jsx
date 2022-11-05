@@ -17,7 +17,8 @@ const CollectionPreview = (props) => {
                             return (
                                 <CollectionItem key={id} {...otherItemProps} />
                             )
-                        })}
+                        })
+                }
             </div>
         </div>
     )

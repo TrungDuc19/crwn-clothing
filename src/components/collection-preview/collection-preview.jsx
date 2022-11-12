@@ -1,6 +1,5 @@
 import React from "react";
 
-import withRouter from "../../ReactV5/WithRouter";
 import CollectionItem from "../collection-item/collection-item";
 
 import './collection-preview.scss'
@@ -12,7 +11,8 @@ const CollectionPreview = (props) => {
             <h1 className="title">{title}</h1>
             <div className="preview">
                 {items && items.length &&
-                    items.filter((item, index) => index < 4)
+                    items
+                        .filter((item, index) => index < 4)
                         .map(({ id, ...otherItemProps }) => {
                             return (
                                 <CollectionItem key={id} {...otherItemProps} />
@@ -24,4 +24,4 @@ const CollectionPreview = (props) => {
     )
 }
 
-export default withRouter(CollectionPreview);
+export default CollectionPreview;

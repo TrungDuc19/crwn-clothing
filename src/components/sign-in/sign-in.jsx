@@ -2,13 +2,14 @@ import React from "react";
 
 import FormInPut from "../form-input/form-input";
 import CustomButton from "../custom-button/custom-button";
-import { signInWithGoogle } from "../../utils/firebase/firebase";
+import { auth, signInWithGoogle } from "../../utils/firebase/firebaseApp";
 
 import './sign-in.scss'
+import { signInWithEmailAndPassword } from "firebase/auth";
 
 class SignIn extends React.Component {
-    constructor(props) {
-        super(props);
+    constructor() {
+        super();
 
         this.state = {
             email: '',
@@ -16,12 +17,15 @@ class SignIn extends React.Component {
         }
     }
 
-    handleSubmit = event => {
+    handleSubmit = async event => {
         event.preventDefault();
-        this.setState({
-            email: '',
-            password: ''
-        });
+        const { email, password } = this.state;
+        try {
+            await signInWithEmailAndPassword(auth, email, password);
+            this.setState({ email: '', password: '' });
+        } catch (error) {
+            console.log(error);
+        }
     }
     handleOnChange = event => {
         const { name, value } = event.target;
@@ -31,16 +35,17 @@ class SignIn extends React.Component {
     }
 
     render() {
+        let { email, password } = this.state;
         return (
             <div className="sign-in">
                 <h2 className="title">I already have an account</h2>
                 <span>Sign in with your email</span>
-                <form onSubmit={this.handleSubmit}>
+                <form className="sign-in-form" onSubmit={this.handleSubmit}>
                     <FormInPut
                         type="email"
                         name="email"
-                        autoComplete="on"
-                        value={this.state.email}
+                        autoComplete="off"
+                        value={email}
                         onChange={this.handleOnChange}
                         label="email"
                         required
@@ -48,11 +53,12 @@ class SignIn extends React.Component {
                     <FormInPut
                         type="password"
                         name="password"
-                        autoComplete="on"
-                        value={this.state.password}
+                        autoComplete="off"
+                        value={password}
                         onChange={this.handleOnChange}
                         label="password"
-                        required />
+                        required
+                    />
                     <div className="buttons">
                         <CustomButton type="submit">Sign In</CustomButton>
                         <CustomButton onClick={signInWithGoogle} isGoogleSignIn>Sign In with Google</CustomButton>

@@ -4,12 +4,15 @@ import {
   Routes,
   Route,
 } from 'react-router-dom';
+import { onAuthStateChanged } from 'firebase/auth'
+import { onSnapshot } from 'firebase/firestore';
 
 import HomePage from './pages/homepage/homepage';
 import ShopPage from './pages/shop/shop';
 import SignInAndSignUpPage from './pages/sign-in-and-sign-up/sign-in-and-sign-up';
 import Header from './components/header/header';
-import { auth } from './utils/firebase/firebase';
+import { auth } from './utils/firebase/firebaseApp';
+import createUserProfileDocument from './utils/firebase/createUserProfileDocument';
 
 import './App.css';
 
@@ -25,8 +28,21 @@ class App extends React.Component {
   unsubcribeFromAuth = null;
 
   componentDidMount() {
-    this.unsubcribeFromAuth = auth.onAuthStateChanged(user => {
-      this.setState({ currentUser: user });
+    this.unsubcribeFromAuth = onAuthStateChanged(auth, async user => {
+      if (user) {
+        const userRef = await createUserProfileDocument(user);
+        onSnapshot(userRef, snapShot => {
+          this.setState({
+            currentUser: {
+              id: snapShot.id,
+              ...snapShot.data()
+            }
+          });
+        });
+      }
+      else {
+        this.setState({ currentUser: user });
+      }
     })
   }
 

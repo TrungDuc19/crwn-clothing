@@ -2,7 +2,7 @@ import React from "react";
 import { Link, NavLink } from "react-router-dom";
 
 import { ReactComponent as Logo } from '../../assets/crown.svg'
-import { auth } from "../../utils/firebase/firebase";
+import { auth } from "../../utils/firebase/firebaseApp";
 
 import './header.scss'
 

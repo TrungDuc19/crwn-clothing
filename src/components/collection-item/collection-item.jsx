@@ -1,7 +1,5 @@
 import React from "react";
 
-import withRouter from "../../ReactV5/WithRouter";
-
 import './collection-item.scss'
 
 const CollectionItem = (props) => {
@@ -20,4 +18,4 @@ const CollectionItem = (props) => {
     )
 }
 
-export default withRouter(CollectionItem);
+export default CollectionItem;

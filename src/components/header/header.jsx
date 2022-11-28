@@ -1,8 +1,9 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
+import { connect } from "react-redux";
 
 import { ReactComponent as Logo } from '../../assets/crown.svg'
-import { auth } from "../../utils/firebase/firebaseApp";
+import { auth } from "../../firebase/firebaseApp";
 
 import './header.scss'
 
@@ -25,4 +26,8 @@ const Header = ({ currentUser }) => {
     )
 }
 
-export default Header;
+const mapStateToProps = state => ({
+    user: state.user.currentUser
+})
+
+export default connect(mapStateToProps)(Header);

@@ -1,7 +1,7 @@
 import React from "react";
 
 import MenuItem from "../menu-item/menu-item";
-import SECTIONS_DATA from "../../data/sections";
+import SECTIONS_DATA from '../../Data/sections'
 
 import './directory.scss';
 

@@ -3,8 +3,8 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 
 import FormInPut from "../form-input/form-input";
 import CustomButton from "../custom-button/custom-button";
-import createUserProfileDocument from "../../utils/firebase/createUserProfileDocument";
-import { auth } from "../../utils/firebase/firebaseApp";
+import createUserProfileDocument from "../../firebase/createUserProfileDocument";
+import { auth } from "../../firebase/firebaseApp";
 
 import './sign-up.scss'
 

@@ -3,6 +3,7 @@ import {
   BrowserRouter,
   Routes,
   Route,
+  Navigate
 } from 'react-router-dom';
 import { onAuthStateChanged } from 'firebase/auth'
 import { onSnapshot } from 'firebase/firestore';
@@ -51,7 +52,14 @@ class App extends React.Component {
           <Routes>
             <Route path='/' element={<HomePage />} />
             <Route path='/shop' element={<ShopPage />} />
-            <Route path='/sign' element={<SignInAndSignUpPage />} />
+            <Route
+              path='/sign'
+              element={this.props.currentUser ?
+                <Navigate to="/" />
+                :
+                <SignInAndSignUpPage />
+              }
+            />
           </Routes>
         </div>
       </BrowserRouter >
@@ -59,8 +67,15 @@ class App extends React.Component {
   }
 }
 
+const mapStateToProps = ({ user }) => ({
+  currentUser: user.currentUser
+})
+
 const mapDispatchToProps = dispatch => ({
   setCurrentUser: user => dispatch(setCurrentUser(user))
 })
 
-export default connect(null, mapDispatchToProps)(App);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);

@@ -8,9 +8,9 @@ const FormInPut = (props) => {
         <div className="group">
             <input className="form-input" onChange={onChange} {...otherProps} />
             {label ?
-                (<label className={`form-input-label ${otherProps.value.length ? 'shrink' : ''}`}>
+                <label className={`form-input-label ${otherProps.value.length ? 'shrink' : ''}`}>
                     {label}
-                </label>)
+                </label>
                 : null
             }
         </div>

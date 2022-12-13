@@ -1,21 +1,20 @@
-import { doc, getDoc, setDoc } from "firebase/firestore";
+import { doc, getDoc, serverTimestamp, setDoc } from "firebase/firestore";
 import { db } from "./firebaseApp";
 
 const createUserProfileDocument = async (userAuth, addtionalData) => {
     if (!userAuth) return;
 
-    const userRef = doc(db, `users/${userAuth.uid}`);
+    const userRef = doc(db, 'users', userAuth.uid);
     const snapShot = await getDoc(userRef);
 
     if (!snapShot.exists()) {
         const { displayName, email } = userAuth;
-        const createAt = new Date();
 
         try {
             await setDoc(userRef, {
                 displayName,
                 email,
-                createAt,
+                createAt: serverTimestamp(),
                 ...addtionalData
             });
         } catch (error) {

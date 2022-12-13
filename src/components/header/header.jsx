@@ -1,33 +1,40 @@
 import React from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
 import { ReactComponent as Logo } from '../../assets/crown.svg'
 import { auth } from "../../firebase/firebaseApp";
+import CartIcon from "../cart-icon/cart-icon";
+import CartDropdown from "../cart-dropdown/cart-dropdown";
 
 import './header.scss'
 
-const Header = ({ currentUser }) => {
+const Header = ({ currentUser, hidden }) => {
     return (
         <div className="header">
             <Link className="logo-container" to="/">
                 <Logo />
             </Link>
             <div className="options">
-                <NavLink className="option" to="/">HOME</NavLink>
-                <NavLink className="option" to="/shop">SHOP</NavLink>
+                <Link className="option" to="/">HOME</Link>
+                <Link className="option" to="/shop">SHOP</Link>
                 {currentUser ?
                     <div className="option" onClick={() => auth.signOut()}>SIGN OUT</div>
                     :
-                    <NavLink className="option" to="/sign">SIGN IN</NavLink>
+                    <Link className="option" to="/sign">SIGN IN</Link>
                 }
+                <CartIcon />
             </div>
+            {
+                hidden ? null : <CartDropdown />
+            }
         </div>
     )
 }
 
-const mapStateToProps = state => ({
-    currentUser: state.user.currentUser
+const mapStateToProps = ({ user: { currentUser }, cart: { hidden } }) => ({
+    currentUser,
+    hidden
 })
 
-export default connect(mapStateToProps)(Header);
+export default connect(mapStateToProps, null)(Header);

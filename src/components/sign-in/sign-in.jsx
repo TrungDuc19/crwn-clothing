@@ -1,13 +1,13 @@
-import React from "react";
+import { Component } from "react";
+import { signInWithEmailAndPassword } from "firebase/auth";
 
+import './sign-in.scss'
 import FormInPut from "../form-input/form-input";
 import CustomButton from "../custom-button/custom-button";
 import { auth, signInWithGoogle } from "../../firebase/firebaseApp";
 
-import './sign-in.scss'
-import { signInWithEmailAndPassword } from "firebase/auth";
 
-class SignIn extends React.Component {
+class SignIn extends Component {
     constructor() {
         super();
 
@@ -24,10 +24,11 @@ class SignIn extends React.Component {
             await signInWithEmailAndPassword(auth, email, password);
             this.setState({ email: '', password: '' });
         } catch (error) {
-            console.log(error);
+            console.log(error.message);
         }
     }
-    handleOnChange = event => {
+
+    handleChange = event => {
         const { name, value } = event.target;
         this.setState({
             [name]: value
@@ -46,7 +47,7 @@ class SignIn extends React.Component {
                         name="email"
                         autoComplete="off"
                         value={email}
-                        onChange={this.handleOnChange}
+                        onChange={this.handleChange}
                         label="email"
                         required
                     />
@@ -55,7 +56,7 @@ class SignIn extends React.Component {
                         name="password"
                         autoComplete="off"
                         value={password}
-                        onChange={this.handleOnChange}
+                        onChange={this.handleChange}
                         label="password"
                         required
                     />

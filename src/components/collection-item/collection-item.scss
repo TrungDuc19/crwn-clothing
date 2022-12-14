@@ -1,8 +1,9 @@
 .collection-item {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 24%;
+    width: 22%;
     height: 350px;
 
     .image {
@@ -13,15 +14,35 @@
         background-position: center;
     }
 
+    .custom-button {
+        position: absolute;
+        display: none;
+        top: 255px;
+        width: 80%;
+        opacity: 0.7;
+    }
+
+    &:hover {
+        .image {
+            opacity: 0.8;
+        }
+
+        .custom-button {
+            display: block;
+            opacity: 0.85;
+        }
+    }
+
     .collection-footer {
         display: flex;
         justify-content: space-between;
         width: 100%;
-        height: 24px;
+        height: 5%;
         font-size: 18px;
 
         .name {
             width: 90%;
+            margin-bottom: 15px;
         }
 
         .price {

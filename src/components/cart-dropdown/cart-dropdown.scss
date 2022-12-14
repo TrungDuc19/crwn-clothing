@@ -12,8 +12,8 @@
     z-index: 5;
 
     .cart-items {
-        flex-direction: column;
         display: flex;
+        flex-direction: column;
         height: 240px;
         overflow: scroll;
     }

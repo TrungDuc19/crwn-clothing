@@ -9,15 +9,14 @@
     cursor: pointer;
 
     .shopping-icon {
-        width: 46px;
-        height: 46px;
+        width: 42px;
+        height: 42px;
     }
 
     .item-count {
         position: absolute;
-        top: 20px;
+        bottom: 8px;
         font-size: 14px;
         font-weight: bold;
-        bottom: 12px;
     }
 }

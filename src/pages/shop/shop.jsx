@@ -1,11 +1,11 @@
-import React from "react";
+import { Component } from "react";
 
 import CollectionPreview from "../../components/collection-preview/collection-preview";
 import SHOP_DATA from "../../data/shop";
 
 import './shop.scss';
 
-class ShopPage extends React.Component {
+class ShopPage extends Component {
     constructor() {
         super();
 

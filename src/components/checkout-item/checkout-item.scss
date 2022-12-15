@@ -1,0 +1,22 @@
+.checkout-item {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    min-height: 100px;
+    border-bottom: 1px solid darkgray;
+    padding: 15px 0;
+    font-size: 20px;
+
+    .image-container {
+        img {
+            width: 100%;
+            height: auto;
+        }
+    }
+
+    .remove-btn {
+        width: 8%;
+        margin: 0 6%;
+        cursor: pointer;
+    }
+}

@@ -4,9 +4,19 @@ const toggleCartHidden = () => ({
     type: CartActionTypes.TOGGLE_CART_HIDDEN,
 });
 
-const addItem = item => ({
-    type: CartActionTypes.ADD_ITEM,
+const addItemToCart = item => ({
+    type: CartActionTypes.ADD_ITEM_TO_CART,
+    payload: item
+});
+
+const decreaseItemFromCart = item => ({
+    type: CartActionTypes.DECREASE_ITEM_FROM_CART,
     payload: item
 })
 
-export { toggleCartHidden, addItem };
+const removeItemFromCart = item => ({
+    type: CartActionTypes.REMOVE_ITEM_FROM_CART,
+    payload: item
+})
+
+export { toggleCartHidden, addItemToCart, decreaseItemFromCart, removeItemFromCart };

@@ -14,6 +14,16 @@
         }
     }
 
+    .quantity {
+        .arrow {
+            cursor: pointer;
+        }
+
+        .value {
+            margin: 0 10px;
+        }
+    }
+
     .remove-btn {
         width: 8%;
         margin: 0 6%;

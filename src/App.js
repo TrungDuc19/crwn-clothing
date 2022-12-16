@@ -11,10 +11,10 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
 import './App.css';
-import HomePage from './pages/homepage/homepage';
-import ShopPage from './pages/shop/shop';
-import CheckoutPage from './pages/checkout/checkout';
-import SignInAndSignUpPage from './pages/sign-in-and-sign-up/sign-in-and-sign-up';
+import HomePage from './pages/home-page/home-page';
+import ShopPage from './pages/shop-page/shop-page';
+import CheckoutPage from './pages/checkout-page/checkout-page';
+import SignInAndSignUpPage from './pages/sign-in-and-sign-up-page/sign-in-and-sign-up-page';
 import Header from './components/header/header';
 import { auth } from './firebase/firebaseApp';
 import createUserProfileDocument from './firebase/createUserProfileDocument';
@@ -53,11 +53,12 @@ class App extends React.Component {
         <div className="App">
           <Header />
           <Routes>
-            <Route path='/' element={<HomePage />} />
-            <Route path='/shop' element={<ShopPage />} />
-            <Route path='/checkout' element={<CheckoutPage />} />
+            <Route path="/" element={<HomePage />}>
+            </Route>
+            <Route path="shop/*" element={<ShopPage />} />
+            <Route path="checkout" element={<CheckoutPage />} />
             <Route
-              path='/sign'
+              path="sign"
               element={this.props.currentUser ?
                 <Navigate to="/" />
                 :

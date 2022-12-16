@@ -24,20 +24,20 @@ const SECTIONS_DATA = [
         linkUrl: 'shop/sneakers'
     },
     {
-        title: 'Womens',
-        // imageUrl: 'https://i.ibb.co/GCCdy8t/womens.png',
-        imageUrl: '/images/homepage-img/womens.png', // local file in public//images/homepage-img/
+        title: 'Women',
+        // imageUrl: 'https://i.ibb.co/GCCdy8t/women.png',
+        imageUrl: '/images/homepage-img/women.png', // local file in public//images/homepage-img/
         size: 'large',
         id: 4,
-        linkUrl: 'shop/womens'
+        linkUrl: 'shop/women'
     },
     {
-        title: 'Mens',
+        title: 'Men',
         // imageUrl: 'https://i.ibb.co/R70vBrQ/men.png',
         imageUrl: '/images/homepage-img/men.png', // local file in public//images/homepage-img/
         size: 'large',
         id: 5,
-        linkUrl: 'shop/mens'
+        linkUrl: 'shop/men'
     }
 ];
 

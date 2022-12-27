@@ -1,6 +1,6 @@
 import { initializeApp } from 'firebase/app'
-import { getAuth, signInWithPopup, GoogleAuthProvider } from 'firebase/auth'
-import { getFirestore } from 'firebase/firestore';
+import { connectAuthEmulator, getAuth } from 'firebase/auth'
+import { connectFirestoreEmulator, getFirestore } from 'firebase/firestore';
 
 const firebaseConfig = {
     apiKey: "AIzaSyBzcQYpuYFOgiO7yKmfU-aPdIKjX1VcM0g",
@@ -16,10 +16,12 @@ const firebaseApp = initializeApp(firebaseConfig);
 const auth = getAuth(firebaseApp);
 const db = getFirestore(firebaseApp);
 
-const provider = new GoogleAuthProvider();
-provider.setCustomParameters({ prompt: 'select_account' });
-const signInWithGoogle = () => signInWithPopup(auth, provider);
+// Firebase localhost
+if (process.env.NODE_ENV !== "production") {
+    connectAuthEmulator(auth, "http://localhost:9099");
+    connectFirestoreEmulator(db, "localhost", 8080);
+}
 
-export { auth, db, signInWithGoogle };
+export { auth, db };
 export default firebaseApp;
 

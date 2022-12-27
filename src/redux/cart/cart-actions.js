@@ -12,11 +12,21 @@ const addItemToCart = item => ({
 const decreaseItemFromCart = item => ({
     type: CartActionTypes.DECREASE_ITEM_FROM_CART,
     payload: item
-})
+});
 
 const removeItemFromCart = item => ({
     type: CartActionTypes.REMOVE_ITEM_FROM_CART,
     payload: item
-})
+});
 
-export { toggleCartHidden, addItemToCart, decreaseItemFromCart, removeItemFromCart };
+const clearCart = () => ({
+    type: CartActionTypes.CLEAR_CART
+});
+
+export {
+    toggleCartHidden,
+    addItemToCart,
+    decreaseItemFromCart,
+    removeItemFromCart,
+    clearCart
+};

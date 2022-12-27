@@ -2,7 +2,7 @@ import CartActionTypes from "./cart-types";
 import { addItemToCart, decreaseItemFromCart, removeItemFromCart } from "./cart-utils";
 
 const INIT_STATE = {
-    hidden: true,
+    isHidden: true,
     cartItems: []
 };
 
@@ -11,7 +11,7 @@ const cartReducer = (state = INIT_STATE, action) => {
         case CartActionTypes.TOGGLE_CART_HIDDEN:
             return {
                 ...state,
-                hidden: !state.hidden
+                isHidden: !state.isHidden
             };
         case CartActionTypes.ADD_ITEM_TO_CART:
             return {
@@ -27,6 +27,11 @@ const cartReducer = (state = INIT_STATE, action) => {
             return {
                 ...state,
                 cartItems: removeItemFromCart(state.cartItems, action.payload)
+            }
+        case CartActionTypes.CLEAR_CART:
+            return {
+                ...state,
+                cartItems: []
             }
         default:
             return state;

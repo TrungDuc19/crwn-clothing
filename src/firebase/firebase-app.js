@@ -1,6 +1,6 @@
 import { initializeApp } from 'firebase/app'
-import { connectAuthEmulator, getAuth } from 'firebase/auth'
-import { connectFirestoreEmulator, getFirestore } from 'firebase/firestore';
+import { getAuth } from 'firebase/auth'
+import { getFirestore } from 'firebase/firestore';
 
 const firebaseConfig = {
     apiKey: "AIzaSyBzcQYpuYFOgiO7yKmfU-aPdIKjX1VcM0g",
@@ -17,10 +17,10 @@ const auth = getAuth(firebaseApp);
 const db = getFirestore(firebaseApp);
 
 // Firebase localhost
-if (process.env.NODE_ENV !== "production") {
-    connectAuthEmulator(auth, "http://localhost:9099");
-    connectFirestoreEmulator(db, "localhost", 8080);
-}
+// if (process.env.NODE_ENV !== "production") {
+//     connectAuthEmulator(auth, "http://localhost:9099");
+//     connectFirestoreEmulator(db, "localhost", 8080);
+// }
 
 export { auth, db };
 export default firebaseApp;

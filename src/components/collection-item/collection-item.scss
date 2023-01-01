@@ -1,15 +1,15 @@
 .collection-item {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 25%;
-    height: 350px;
-    padding: 1.5%;
+    &-container {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 100%;
+    }
 
     .image {
         width: 100%;
-        height: 95%;
+        height: 90%;
         margin-bottom: 5px;
         background-size: cover;
         background-position: center;
@@ -18,7 +18,6 @@
     .custom-button {
         position: absolute;
         display: none;
-        top: 255px;
         width: 80%;
         opacity: 0.7;
     }
@@ -38,12 +37,9 @@
         display: flex;
         justify-content: space-between;
         width: 100%;
-        height: 5%;
-        font-size: 18px;
 
         .name {
             width: 90%;
-            margin-bottom: 15px;
         }
 
         .price {

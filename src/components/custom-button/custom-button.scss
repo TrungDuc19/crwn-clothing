@@ -1,16 +1,10 @@
 .custom-button {
-    display: flex;
-    justify-content: center;
-    min-width: 165px;
-    width: auto;
-    height: 50px;
-    border: none;
-    padding: 0 35px 0 35px;
+    border: 1px solid transparent;
+    padding: 12px 24px;
     background-color: black;
     font-family: 'Open Sans';
-    font-size: 15px;
     font-weight: bolder;
-    line-height: 50px;
+    text-align: center;
     text-transform: uppercase;
     letter-spacing: 0.5px;
     color: white;

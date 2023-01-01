@@ -8,10 +8,11 @@ import CollectionItem from "../../components/collection-item/collection-item";
 
 const CollectionPage = () => {
     const { collectionId } = useParams();
-    const { title, items } = useSelector(selectShopCollection(collectionId));
+    const collection = useSelector(selectShopCollection(collectionId));
+    const { title, items } = collection;
 
     return (
-        <div className="collection-page">
+        <div className="collection-page grid">
             <h2 className="title">{title}</h2>
             <div className="items">
                 {
@@ -21,7 +22,6 @@ const CollectionPage = () => {
                 }
             </div>
         </div>
-
     );
 }
 

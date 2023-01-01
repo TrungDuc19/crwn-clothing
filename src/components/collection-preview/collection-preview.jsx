@@ -12,12 +12,11 @@ const CollectionPreview = ({ title, items, routeName }) => {
             <Link to={`${pathname}/${routeName}`} className="title">{title}</Link>
             <div className="preview">
                 {
-                    items?.filter((item, index) => index < 4)
-                        .map(item => {
-                            return (
-                                <CollectionItem key={item.id} item={item} />
-                            )
-                        })
+                    items?.map(item => {
+                        return (
+                            <CollectionItem key={item.id} item={item} />
+                        )
+                    })
                 }
             </div>
         </div>

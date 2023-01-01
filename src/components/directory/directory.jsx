@@ -6,14 +6,16 @@ import MenuItem from "../menu-item/menu-item";
 import { selectDirectorySections } from '../../redux/directory/directory-selectors';
 
 const Directory = ({ sections }) => (
-    <div className="directory-menu">
-        {
-            sections?.map(({ id, ...otherSectionProps }) => {
-                return (
-                    <MenuItem key={id} {...otherSectionProps} />
-                )
-            })
-        }
+    <div className="directory">
+        <div className='directory-container grid'>
+            {
+                sections?.map(({ id, ...otherSectionProps }) => {
+                    return (
+                        <MenuItem key={id} {...otherSectionProps} />
+                    )
+                })
+            }
+        </div>
     </div>
 );
 

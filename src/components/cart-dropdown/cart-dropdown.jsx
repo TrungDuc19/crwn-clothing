@@ -19,11 +19,12 @@ const CartDropdown = ({ cartItems, toggleCartHidden }) => {
     return (
         <div className="cart-dropdown">
             <div className="cart-items">
-                {cartItems.length
-                    ? cartItems.map(cartItem => (
-                        <CartItem key={cartItem.id} item={cartItem} />
-                    ))
-                    : <span className="cart-items--empty">Your cart is empty</span>
+                {
+                    cartItems.length
+                        ? cartItems.map(cartItem => (
+                            <CartItem key={cartItem.id} item={cartItem} />
+                        ))
+                        : <span className="cart-items--empty">Your cart is empty</span>
                 }
             </div>
             <CustomButton onClick={handleCLick}>

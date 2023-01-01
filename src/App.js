@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import { useEffect } from 'react';
 import {
   BrowserRouter,
   Routes,
@@ -8,7 +8,8 @@ import {
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
-import './App.css';
+import './styles/global.scss';
+import './styles/responsive.scss';
 import HomePage from './pages/home-page/home-page';
 import ShopPage from './pages/shop-page/shop-page';
 import CheckoutPage from './pages/checkout-page/checkout-page';
@@ -17,41 +18,32 @@ import Header from './components/header/header';
 import { selectCurrentUser } from './redux/user/user-selectors';
 import { checkUserSession } from './redux/user/user-actions';
 
-class App extends Component {
-  unsubscribeFromAuth = null;
-
-  componentDidMount() {
-    const { checkUserSession } = this.props;
+const App = ({ currentUser, checkUserSession }) => {
+  useEffect(() => {
     checkUserSession();
-  }
+  }, [checkUserSession]);
 
-  componentWillUnmount() {
-    this.unsubscribeFromAuth();
-  }
-
-  render() {
-    return (
-      <BrowserRouter>
-        <div className="App">
-          <Header />
-          <Routes>
-            <Route path="/" element={<HomePage />}>
-            </Route>
-            <Route path="shop/*" element={<ShopPage />} />
-            <Route path="checkout" element={<CheckoutPage />} />
-            <Route
-              path="sign"
-              element={
-                this.props.currentUser
-                  ? <Navigate to="/" />
-                  : <SignInAndSignUpPage />
-              }
-            />
-          </Routes>
-        </div>
-      </BrowserRouter >
-    );
-  }
+  return (
+    <BrowserRouter>
+      <div className="App">
+        <Header />
+        <Routes>
+          <Route path="/" element={<HomePage />}>
+          </Route>
+          <Route path="shop/*" element={<ShopPage />} />
+          <Route path="checkout" element={<CheckoutPage />} />
+          <Route
+            path="sign"
+            element={
+              currentUser
+                ? <Navigate to="/" />
+                : <SignInAndSignUpPage />
+            }
+          />
+        </Routes>
+      </div>
+    </BrowserRouter >
+  );
 }
 
 const mapStateToProps = createStructuredSelector({

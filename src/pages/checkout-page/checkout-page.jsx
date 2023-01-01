@@ -8,37 +8,39 @@ import StripeCheckoutButton from "../../components/stripe-button/stripe-button";
 
 const CheckoutPage = ({ cartItems, total }) => (
     <div className="checkout-page">
-        <div className="checkout-header checkout-row">
-            <div className="header-block checkout-col">
-                <span className="">PRODUCT</span>
+        <div className="checkout-page-container grid">
+            <div className="checkout-header checkout-row">
+                <div className="header-block checkout-col">
+                    <span className="">PRODUCT</span>
+                </div>
+                <div className="header-block checkout-col">
+                    <span className="">DESCRIPTION</span>
+                </div>
+                <div className="header-block checkout-col">
+                    <span className="">QUANTITY</span>
+                </div>
+                <div className="header-block checkout-col">
+                    <span className="">PRICE</span>
+                </div>
+                <div className="header-block checkout-col">
+                    <span className="">REMOVE</span>
+                </div>
             </div>
-            <div className="header-block checkout-col">
-                <span className="">DESCRIPTION</span>
+            {
+                cartItems.map(cartItem => (
+                    <CheckoutItem key={cartItem.id} cartItem={cartItem} />
+                ))
+            }
+            <div className="total">TOTAL: ${total}</div>
+            <div className="test-warning">
+                *Please use the following for test credit card payments*
+                <br />
+                VISA: 4242 4242 4242 4242
+                <br />
+                Exp: Any Future Date - CW: Any 3 Digits
             </div>
-            <div className="header-block checkout-col">
-                <span className="">QUANTITY</span>
-            </div>
-            <div className="header-block checkout-col">
-                <span className="">PRICE</span>
-            </div>
-            <div className="header-block checkout-col">
-                <span className="">REMOVE</span>
-            </div>
+            <StripeCheckoutButton price={total} />
         </div>
-        {
-            cartItems.map(cartItem => (
-                <CheckoutItem key={cartItem.id} cartItem={cartItem} />
-            ))
-        }
-        <div className="total">TOTAL: ${total}</div>
-        <div className="test-warning">
-            *Please use the following for test credit card payments*
-            <br />
-            VISA: 4242 4242 4242 4242
-            <br />
-            Exp: Any Future Date - CW: Any 3 Digits
-        </div>
-        <StripeCheckoutButton price={total} />
     </div>
 );
 
